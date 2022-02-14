@@ -21,4 +21,9 @@ $app->get('/', function() use($app) {
     return 'TEST';
 });
 
+$app->post('/', function() use($app) {
+    $app['monolog']->info(var_export($_COOKIE, true));
+    return 'TEST';
+});
+
 $app->run();
