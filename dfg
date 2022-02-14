@@ -1,0 +1,590 @@
+diff --git a/composer.json b/composer.json
+index 1a39344..2b6fd93 100644
+--- a/composer.json
++++ b/composer.json
+@@ -1,9 +1,6 @@
+ {
+   "require" : {
+-    "silex/silex": "^2.0.4",
+-    "monolog/monolog": "^1.22",
+-    "twig/twig": "^2.0",
+-    "symfony/twig-bridge": "^3"
++    "silex/silex": "^2.0.4"
+   },
+   "require-dev": {
+     "heroku/heroku-buildpack-php": "*"
+diff --git a/composer.lock b/composer.lock
+index a3d60d1..fef0b33 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -4,64 +4,38 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "e66fd5c3f8342ff9ed1f0d21aab6ef81",
++    "content-hash": "8dc53dcf317ef450dfb0bc6eb943a012",
+     "packages": [
+         {
+-            "name": "monolog/monolog",
+-            "version": "1.22.1",
++            "name": "pimple/pimple",
++            "version": "v3.5.0",
+             "source": {
+                 "type": "git",
+-                "url": "https://github.com/Seldaek/monolog.git",
+-                "reference": "1e044bc4b34e91743943479f1be7a1d5eb93add0"
++                "url": "https://github.com/silexphp/Pimple.git",
++                "reference": "a94b3a4db7fb774b3d78dad2315ddc07629e1bed"
+             },
+             "dist": {
+                 "type": "zip",
+-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/1e044bc4b34e91743943479f1be7a1d5eb93add0",
+-                "reference": "1e044bc4b34e91743943479f1be7a1d5eb93add0",
++                "url": "https://api.github.com/repos/silexphp/Pimple/zipball/a94b3a4db7fb774b3d78dad2315ddc07629e1bed",
++                "reference": "a94b3a4db7fb774b3d78dad2315ddc07629e1bed",
+                 "shasum": ""
+             },
+             "require": {
+-                "php": ">=5.3.0",
+-                "psr/log": "~1.0"
+-            },
+-            "provide": {
+-                "psr/log-implementation": "1.0.0"
++                "php": ">=7.2.5",
++                "psr/container": "^1.1 || ^2.0"
+             },
+             "require-dev": {
+-                "aws/aws-sdk-php": "^2.4.9 || ^3.0",
+-                "doctrine/couchdb": "~1.0@dev",
+-                "graylog2/gelf-php": "~1.0",
+-                "jakub-onderka/php-parallel-lint": "0.9",
+-                "php-amqplib/php-amqplib": "~2.4",
+-                "php-console/php-console": "^3.1.3",
+-                "phpunit/phpunit": "~4.5",
+-                "phpunit/phpunit-mock-objects": "2.3.0",
+-                "ruflin/elastica": ">=0.90 <3.0",
+-                "sentry/sentry": "^0.13",
+-                "swiftmailer/swiftmailer": "~5.3"
+-            },
+-            "suggest": {
+-                "aws/aws-sdk-php": "Allow sending log messages to AWS services like DynamoDB",
+-                "doctrine/couchdb": "Allow sending log messages to a CouchDB server",
+-                "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
+-                "ext-mongo": "Allow sending log messages to a MongoDB server",
+-                "graylog2/gelf-php": "Allow sending log messages to a GrayLog2 server",
+-                "mongodb/mongodb": "Allow sending log messages to a MongoDB server via PHP Driver",
+-                "php-amqplib/php-amqplib": "Allow sending log messages to an AMQP server using php-amqplib",
+-                "php-console/php-console": "Allow sending log messages to Google Chrome",
+-                "rollbar/rollbar": "Allow sending log messages to Rollbar",
+-                "ruflin/elastica": "Allow sending log messages to an Elastic Search server",
+-                "sentry/sentry": "Allow sending log messages to a Sentry server"
++                "symfony/phpunit-bridge": "^5.4@dev"
+             },
+             "type": "library",
+             "extra": {
+                 "branch-alias": {
+-                    "dev-master": "2.0.x-dev"
++                    "dev-master": "3.4.x-dev"
+                 }
+             },
+             "autoload": {
+-                "psr-4": {
+-                    "Monolog\\": "src/Monolog"
++                "psr-0": {
++                    "Pimple": "src/"
+                 }
+             },
+             "notification-url": "https://packagist.org/downloads/",
+@@ -70,46 +44,47 @@
+             ],
+             "authors": [
+                 {
+-                    "name": "Jordi Boggiano",
+-                    "email": "j.boggiano@seld.be",
+-                    "homepage": "http://seld.be"
++                    "name": "Fabien Potencier",
++                    "email": "fabien@symfony.com"
+                 }
+             ],
+-            "description": "Sends your logs to files, sockets, inboxes, databases and various web services",
+-            "homepage": "http://github.com/Seldaek/monolog",
++            "description": "Pimple, a simple Dependency Injection Container",
++            "homepage": "https://pimple.symfony.com",
+             "keywords": [
+-                "log",
+-                "logging",
+-                "psr-3"
++                "container",
++                "dependency injection"
+             ],
+-            "time": "2017-03-13T07:08:03+00:00"
++            "support": {
++                "source": "https://github.com/silexphp/Pimple/tree/v3.5.0"
++            },
++            "time": "2021-10-28T11:13:42+00:00"
+         },
+         {
+-            "name": "pimple/pimple",
+-            "version": "v3.0.2",
++            "name": "psr/container",
++            "version": "2.0.2",
+             "source": {
+                 "type": "git",
+-                "url": "https://github.com/silexphp/Pimple.git",
+-                "reference": "a30f7d6e57565a2e1a316e1baf2a483f788b258a"
++                "url": "https://github.com/php-fig/container.git",
++                "reference": "c71ecc56dfe541dbd90c5360474fbc405f8d5963"
+             },
+             "dist": {
+                 "type": "zip",
+-                "url": "https://api.github.com/repos/silexphp/Pimple/zipball/a30f7d6e57565a2e1a316e1baf2a483f788b258a",
+-                "reference": "a30f7d6e57565a2e1a316e1baf2a483f788b258a",
++                "url": "https://api.github.com/repos/php-fig/container/zipball/c71ecc56dfe541dbd90c5360474fbc405f8d5963",
++                "reference": "c71ecc56dfe541dbd90c5360474fbc405f8d5963",
+                 "shasum": ""
+             },
+             "require": {
+-                "php": ">=5.3.0"
++                "php": ">=7.4.0"
+             },
+             "type": "library",
+             "extra": {
+                 "branch-alias": {
+-                    "dev-master": "3.0.x-dev"
++                    "dev-master": "2.0.x-dev"
+                 }
+             },
+             "autoload": {
+-                "psr-0": {
+-                    "Pimple": "src/"
++                "psr-4": {
++                    "Psr\\Container\\": "src/"
+                 }
+             },
+             "notification-url": "https://packagist.org/downloads/",
+@@ -118,44 +93,51 @@
+             ],
+             "authors": [
+                 {
+-                    "name": "Fabien Potencier",
+-                    "email": "fabien@symfony.com"
++                    "name": "PHP-FIG",
++                    "homepage": "https://www.php-fig.org/"
+                 }
+             ],
+-            "description": "Pimple, a simple Dependency Injection Container",
+-            "homepage": "http://pimple.sensiolabs.org",
++            "description": "Common Container Interface (PHP FIG PSR-11)",
++            "homepage": "https://github.com/php-fig/container",
+             "keywords": [
++                "PSR-11",
+                 "container",
+-                "dependency injection"
++                "container-interface",
++                "container-interop",
++                "psr"
+             ],
+-            "time": "2015-09-11T15:10:35+00:00"
++            "support": {
++                "issues": "https://github.com/php-fig/container/issues",
++                "source": "https://github.com/php-fig/container/tree/2.0.2"
++            },
++            "time": "2021-11-05T16:47:00+00:00"
+         },
+         {
+             "name": "psr/log",
+-            "version": "1.0.2",
++            "version": "2.0.0",
+             "source": {
+                 "type": "git",
+                 "url": "https://github.com/php-fig/log.git",
+-                "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d"
++                "reference": "ef29f6d262798707a9edd554e2b82517ef3a9376"
+             },
+             "dist": {
+                 "type": "zip",
+-                "url": "https://api.github.com/repos/php-fig/log/zipball/4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
+-                "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
++                "url": "https://api.github.com/repos/php-fig/log/zipball/ef29f6d262798707a9edd554e2b82517ef3a9376",
++                "reference": "ef29f6d262798707a9edd554e2b82517ef3a9376",
+                 "shasum": ""
+             },
+             "require": {
+-                "php": ">=5.3.0"
++                "php": ">=8.0.0"
+             },
+             "type": "library",
+             "extra": {
+                 "branch-alias": {
+-                    "dev-master": "1.0.x-dev"
++                    "dev-master": "2.0.x-dev"
+                 }
+             },
+             "autoload": {
+                 "psr-4": {
+-                    "Psr\\Log\\": "Psr/Log/"
++                    "Psr\\Log\\": "src"
+                 }
+             },
+             "notification-url": "https://packagist.org/downloads/",
+@@ -165,7 +147,7 @@
+             "authors": [
+                 {
+                     "name": "PHP-FIG",
+-                    "homepage": "http://www.php-fig.org/"
++                    "homepage": "https://www.php-fig.org/"
+                 }
+             ],
+             "description": "Common interface for logging libraries",
+@@ -175,65 +157,69 @@
+                 "psr",
+                 "psr-3"
+             ],
+-            "time": "2016-10-10T12:19:37+00:00"
++            "support": {
++                "source": "https://github.com/php-fig/log/tree/2.0.0"
++            },
++            "time": "2021-07-14T16:41:46+00:00"
+         },
+         {
+             "name": "silex/silex",
+-            "version": "v2.0.4",
++            "version": "v2.3.0",
+             "source": {
+                 "type": "git",
+                 "url": "https://github.com/silexphp/Silex.git",
+-                "reference": "49ca08d853731d1635374e5019c8696cfd53c161"
++                "reference": "6bc31c1b8c4ef614a7115320fd2d3b958032f131"
+             },
+             "dist": {
+                 "type": "zip",
+-                "url": "https://api.github.com/repos/silexphp/Silex/zipball/49ca08d853731d1635374e5019c8696cfd53c161",
+-                "reference": "49ca08d853731d1635374e5019c8696cfd53c161",
++                "url": "https://api.github.com/repos/silexphp/Silex/zipball/6bc31c1b8c4ef614a7115320fd2d3b958032f131",
++                "reference": "6bc31c1b8c4ef614a7115320fd2d3b958032f131",
+                 "shasum": ""
+             },
+             "require": {
+-                "php": ">=5.5.9",
+-                "pimple/pimple": "~3.0",
+-                "symfony/event-dispatcher": "~2.8|^3.0",
+-                "symfony/http-foundation": "~2.8|^3.0",
+-                "symfony/http-kernel": "~2.8|^3.0",
+-                "symfony/routing": "~2.8|^3.0"
++                "php": ">=7.1.3",
++                "pimple/pimple": "^3.0",
++                "symfony/event-dispatcher": "^4.0",
++                "symfony/http-foundation": "^4.0",
++                "symfony/http-kernel": "^4.0",
++                "symfony/routing": "^4.0"
+             },
+             "replace": {
+                 "silex/api": "self.version",
+                 "silex/providers": "self.version"
+             },
+             "require-dev": {
+-                "doctrine/dbal": "~2.2",
++                "doctrine/dbal": "^2.2",
+                 "monolog/monolog": "^1.4.1",
+-                "swiftmailer/swiftmailer": "~5",
+-                "symfony/asset": "~2.8|^3.0",
+-                "symfony/browser-kit": "~2.8|^3.0",
+-                "symfony/config": "~2.8|^3.0",
+-                "symfony/css-selector": "~2.8|^3.0",
+-                "symfony/debug": "~2.8|^3.0",
+-                "symfony/doctrine-bridge": "~2.8|^3.0",
+-                "symfony/dom-crawler": "~2.8|^3.0",
+-                "symfony/expression-language": "~2.8|^3.0",
+-                "symfony/finder": "~2.8|^3.0",
+-                "symfony/form": "~2.8|^3.0",
+-                "symfony/intl": "~2.8|^3.0",
+-                "symfony/monolog-bridge": "~2.8|^3.0",
+-                "symfony/options-resolver": "~2.8|^3.0",
+-                "symfony/phpunit-bridge": "~2.8|^3.0",
+-                "symfony/process": "~2.8|^3.0",
+-                "symfony/security": "~2.8|^3.0",
+-                "symfony/serializer": "~2.8|^3.0",
+-                "symfony/translation": "~2.8|^3.0",
+-                "symfony/twig-bridge": "~2.8|^3.0",
+-                "symfony/validator": "~2.8|^3.0",
+-                "symfony/var-dumper": "~2.8|^3.0",
+-                "twig/twig": "~1.27|~2.0"
++                "swiftmailer/swiftmailer": "^5",
++                "symfony/asset": "^4.0",
++                "symfony/browser-kit": "^4.0",
++                "symfony/config": "^4.0",
++                "symfony/css-selector": "^4.0",
++                "symfony/debug": "^4.0",
++                "symfony/doctrine-bridge": "^4.0",
++                "symfony/dom-crawler": "^4.0",
++                "symfony/expression-language": "^4.0",
++                "symfony/finder": "^4.0",
++                "symfony/form": "^4.0",
++                "symfony/intl": "^4.0",
++                "symfony/monolog-bridge": "^4.0",
++                "symfony/options-resolver": "^4.0",
++                "symfony/phpunit-bridge": "^3.2",
++                "symfony/process": "^4.0",
++                "symfony/security": "^4.0",
++                "symfony/serializer": "^4.0",
++                "symfony/translation": "^4.0",
++                "symfony/twig-bridge": "^4.0",
++                "symfony/validator": "^4.0",
++                "symfony/var-dumper": "^4.0",
++                "symfony/web-link": "^4.0",
++                "twig/twig": "^2.0"
+             },
+             "type": "library",
+             "extra": {
+                 "branch-alias": {
+-                    "dev-master": "2.0.x-dev"
++                    "dev-master": "2.3.x-dev"
+                 }
+             },
+             "autoload": {
+@@ -260,39 +246,38 @@
+             "keywords": [
+                 "microframework"
+             ],
+-            "time": "2016-11-06T18:09:06+00:00"
++            "support": {
++                "issues": "https://github.com/silexphp/Silex/issues",
++                "source": "https://github.com/silexphp/Silex/tree/v2.3.0"
++            },
++            "abandoned": "symfony/flex",
++            "time": "2018-04-20T05:17:01+00:00"
+         },
+         {
+             "name": "symfony/debug",
+-            "version": "v3.2.7",
++            "version": "v4.4.37",
+             "source": {
+                 "type": "git",
+                 "url": "https://github.com/symfony/debug.git",
+-                "reference": "56f613406446a4a0a031475cfd0a01751de22659"
++                "reference": "5de6c6e7f52b364840e53851c126be4d71e60470"
+             },
+             "dist": {
+                 "type": "zip",
+-                "url": "https://api.github.com/repos/symfony/debug/zipball/56f613406446a4a0a031475cfd0a01751de22659",
+-                "reference": "56f613406446a4a0a031475cfd0a01751de22659",
++                "url": "https://api.github.com/repos/symfony/debug/zipball/5de6c6e7f52b364840e53851c126be4d71e60470",
++                "reference": "5de6c6e7f52b364840e53851c126be4d71e60470",
+                 "shasum": ""
+             },
+             "require": {
+-                "php": ">=5.5.9",
+-                "psr/log": "~1.0"
++                "php": ">=7.1.3",
++                "psr/log": "^1|^2|^3"
+             },
+             "conflict": {
+-                "symfony/http-kernel": ">=2.3,<2.3.24|~2.4.0|>=2.5,<2.5.9|>=2.6,<2.6.2"
++                "symfony/http-kernel": "<3.4"
+             },
+             "require-dev": {
+-                "symfony/class-loader": "~2.8|~3.0",
+-                "symfony/http-kernel": "~2.8|~3.0"
++                "symfony/http-kernel": "^3.4|^4.0|^5.0"
+             },
+             "type": "library",
+-            "extra": {
+-                "branch-alias": {
+-                    "dev-master": "3.2-dev"
+-                }
+-            },
+             "autoload": {
+                 "psr-4": {
+                     "Symfony\\Component\\Debug\\": ""
+@@ -315,50 +300,57 @@
+                     "homepage": "https://symfony.com/contributors"
+                 }
+             ],
+-            "description": "Symfony Debug Component",
++            "description": "Provides tools to ease debugging PHP code",
+             "homepage": "https://symfony.com",
+-            "time": "2017-03-28T21:38:24+00:00"
++            "support": {
++                "source": "https://github.com/symfony/debug/tree/v4.4.37"
++            },
++            "funding": [
++                {
++                    "url": "https://symfony.com/sponsor",
++                    "type": "custom"
++                },
++                {
++                    "url": "https://github.com/fabpot",
++                    "type": "github"
++                },
++                {
++                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
++                    "type": "tidelift"
++                }
++            ],
++            "time": "2022-01-02T09:41:36+00:00"
+         },
+         {
+-            "name": "symfony/event-dispatcher",
+-            "version": "v3.2.7",
++            "name": "symfony/deprecation-contracts",
++            "version": "v3.0.0",
+             "source": {
+                 "type": "git",
+-                "url": "https://github.com/symfony/event-dispatcher.git",
+-                "reference": "154bb1ef7b0e42ccc792bd53edbce18ed73440ca"
++                "url": "https://github.com/symfony/deprecation-contracts.git",
++                "reference": "c726b64c1ccfe2896cb7df2e1331c357ad1c8ced"
+             },
+             "dist": {
+                 "type": "zip",
+-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/154bb1ef7b0e42ccc792bd53edbce18ed73440ca",
+-                "reference": "154bb1ef7b0e42ccc792bd53edbce18ed73440ca",
++                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/c726b64c1ccfe2896cb7df2e1331c357ad1c8ced",
++                "reference": "c726b64c1ccfe2896cb7df2e1331c357ad1c8ced",
+                 "shasum": ""
+             },
+             "require": {
+-                "php": ">=5.5.9"
+-            },
+-            "require-dev": {
+-                "psr/log": "~1.0",
+-                "symfony/config": "~2.8|~3.0",
+-                "symfony/dependency-injection": "~2.8|~3.0",
+-                "symfony/expression-language": "~2.8|~3.0",
+-                "symfony/stopwatch": "~2.8|~3.0"
+-            },
+-            "suggest": {
+-                "symfony/dependency-injection": "",
+-                "symfony/http-kernel": ""
++                "php": ">=8.0.2"
+             },
+             "type": "library",
+             "extra": {
+                 "branch-alias": {
+-                    "dev-master": "3.2-dev"
++                    "dev-main": "3.0-dev"
++                },
++                "thanks": {
++                    "name": "symfony/contracts",
++                    "url": "https://github.com/symfony/contracts"
+                 }
+             },
+             "autoload": {
+-                "psr-4": {
+-                    "Symfony\\Component\\EventDispatcher\\": ""
+-                },
+-                "exclude-from-classmap": [
+-                    "/Tests/"
++                "files": [
++                    "function.php"
+                 ]
+             },
+             "notification-url": "https://packagist.org/downloads/",
+@@ -367,44 +359,63 @@
+             ],
+             "authors": [
+                 {
+-                    "name": "Fabien Potencier",
+-                    "email": "fabien@symfony.com"
++                    "name": "Nicolas Grekas",
++                    "email": "p@tchwork.com"
+                 },
+                 {
+                     "name": "Symfony Community",
+                     "homepage": "https://symfony.com/contributors"
+                 }
+             ],
+-            "description": "Symfony EventDispatcher Component",
++            "description": "A generic function and convention to trigger deprecation notices",
+             "homepage": "https://symfony.com",
+-            "time": "2017-04-04T07:26:27+00:00"
++            "support": {
++                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.0.0"
++            },
++            "funding": [
++                {
++                    "url": "https://symfony.com/sponsor",
++                    "type": "custom"
++                },
++                {
++                    "url": "https://github.com/fabpot",
++                    "type": "github"
++                },
++                {
++                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
++                    "type": "tidelift"
++                }
++            ],
++            "time": "2021-11-01T23:48:49+00:00"
+         },
+         {
+-            "name": "symfony/http-foundation",
+-            "version": "v3.4.47",
++            "name": "symfony/error-handler",
++            "version": "v4.4.37",
+             "source": {
+                 "type": "git",
+-                "url": "https://github.com/symfony/http-foundation.git",
+-                "reference": "b9885fcce6fe494201da4f70a9309770e9d13dc8"
++                "url": "https://github.com/symfony/error-handler.git",
++                "reference": "8d80ad881e1ce17979547873d093e3c987a6a629"
+             },
+             "dist": {
+                 "type": "zip",
+-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/b9885fcce6fe494201da4f70a9309770e9d13dc8",
+-                "reference": "b9885fcce6fe494201da4f70a9309770e9d13dc8",
++                "url": "https://api.github.com/repos/symfony/error-handler/zipball/8d80ad881e1ce17979547873d093e3c987a6a629",
++                "reference": "8d80ad881e1ce17979547873d093e3c987a6a629",
+                 "shasum": ""
+             },
+             "require": {
+-                "php": "^5.5.9|>=7.0.8",
+-                "symfony/polyfill-mbstring": "~1.1",
+-                "symfony/polyfill-php70": "~1.6"
++                "php": ">=7.1.3",
++                "psr/log": "^1|^2|^3",
++                "symfony/debug": "^4.4.5",
++                "symfony/var-dumper": "^4.4|^5.0"
+             },
+             "require-dev": {
+-                "symfony/expression-language": "~2.8|~3.0|~4.0"
++                "symfony/http-kernel": "^4.4|^5.0",
++                "symfony/serializer": "^4.4|^5.0"
+             },
+             "type": "library",
+             "autoload": {
+                 "psr-4": {
+-                    "Symfony\\Component\\HttpFoundation\\": ""
++                    "Symfony\\Component\\ErrorHandler\\": ""
+                 },
+                 "exclude-from-classmap": [
+                     "/Tests/"
+@@ -424,10 +435,10 @@
+                     "homepage": "https://symfony.com/contributors"
+                 }
+             ],
+-            "description": "Symfony HttpFoundation Component",
++            "description": "Provides tools to manage errors and ease debugging PHP code",
+             "homepage": "https://symfony.com",
+             "support": {
+-                "source": "https://github.com/symfony/http-foundation/tree/v3.4.47"
++                "source": "https://github.com/symfony/error-handler/tree/v4.4.37"
+             },
+             "funding": [
+                 {
+@@ -443,67 +454,52 @@
+                     "type": "tidelift"
+                 }
+             ],
+-            "time": "2020-10-24T10:57:07+00:00"
++            "time": "2022-01-02T09:41:36+00:00"
+         },
+         {
+-            "name": "symfony/http-kernel",
+-            "version": "v3.2.7",
++            "name": "symfony/event-dispatcher",
++            "version": "v4.4.37",
+             "source": {
+                 "type": "git",
+-                "url": "https://github.com/symfony/http-kernel.git",
+-                "reference": "
