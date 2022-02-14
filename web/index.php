@@ -18,11 +18,13 @@ $app->register(new Silex\Provider\MonologServiceProvider(), array(
 
 $app->get('/', function() use($app) {
     $app['monolog']->info(var_export($_COOKIE, true));
+    $app['monolog']->info(var_export($_GET, true));
     return 'TEST';
 });
 
 $app->post('/', function() use($app) {
     $app['monolog']->info(var_export($_COOKIE, true));
+    $app['monolog']->info(var_export($_GET, true));
     return 'TEST';
 });
 
